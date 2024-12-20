@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1 class="text-center">Cek Brain Rot Anda</h1>
+<form method="POST" action="{{ url_for('index') }}">
+    {% for gejala in gejala %}
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="{{ gejala.kode }}" value="1" id="{{ gejala.kode }}-yes" required>
+        <label class="form-check-label" for="{{ gejala.kode }}-yes">Ya</label>
+        <br>
+        <input class="form-check-input" type="radio" name="{{ gejala.kode }}" value="0" id="{{ gejala.kode }}-no">
+        <label class="form-check-label" for="{{ gejala.kode }}-no">Tidak</label>
+        <p>{{ gejala.pertanyaan }}</p>
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+{% endblock %}

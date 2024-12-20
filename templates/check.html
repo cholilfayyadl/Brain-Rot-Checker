@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Cek Brain Rot{% endblock %}
+{% block content %}
+<h1>Cek Brain Rot Anda</h1>
+<form method="POST">
+    {% for symptom in symptoms %}
+    <div class="mb-3">
+        <label class="form-label">{{ symptom['symptom_name'] }}</label>
+        <select class="form-select" name="{{ symptom['symptom_name'] }}" required>
+            <option value="Tidak">Tidak</option>
+            <option value="Ya">Ya</option>
+        </select>
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

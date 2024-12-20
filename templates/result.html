@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Hasil Cek Brain Rot{% endblock %}
+{% block content %}
+<h1>Hasil Cek Brain Rot</h1>
+<p>Total Skor: {{ total_score }}</p>
+<p>Kategori Risiko: {{ risk_category }}</p>
+<h3>Rekomendasi:</h3>
+<ul>
+    {% for recommendation in recommendations %}
+        <li>{{ recommendation }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

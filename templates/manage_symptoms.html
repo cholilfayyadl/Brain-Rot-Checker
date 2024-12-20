@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Kelola Gejala{% endblock %}
+
+{% block content %}
+<h1>Kelola Gejala</h1>
+
+<!-- Tombol untuk membuka modal tambah gejala -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSymptomModal">
+    Tambah Gejala
+</button>
+
+<!-- Modal untuk menambah gejala -->
+<div class="modal fade" id="addSymptomModal" tabindex="-1" aria-labelledby="addSymptomModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSymptomModalLabel">Tambah Gejala</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Nama Gejala</label>
+                        <input type="text" name="symptom_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Bobot</label>
+                        <input type="number" name="weight" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Kategori Risiko</label>
+                        <input type="text" name="risk_category" class="form-control" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Tambah Gejala</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Daftar Gejala</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nama Gejala</th>
+            <th>Bobot</th>
+            <th>Kategori Risiko</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for symptom in symptoms %}
+        <tr>
+            <td>{{ symptom['symptom_name'] }}</td>
+            <td>{{ symptom['weight'] }}</td>
+            <td>{{ symptom['risk_category'] }}</td>
+            <td>
+                <!-- Tombol Edit -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" 
+                        data-bs-target="#editSymptomModal{{ symptom['_id'] }}">
+                    Edit
+                </button>
+
+                <!-- Modal Edit Gejala -->
+                <div class="modal fade" id="editSymptomModal{{ symptom['_id'] }}" tabindex="-1" 
+                     aria-labelledby="editSymptomModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editSymptomModalLabel">Edit Gejala</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nama Gejala</label>
+                                        <input type="text" name="symptom_name" class="form-control" 
+                                               value="{{ symptom['symptom_name'] }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Bobot</label>
+                                        <input type="number" name="weight" class="form-control" 
+                                               value="{{ symptom['weight'] }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Kategori Risiko</label>
+                                        <input type="text" name="risk_category" class="form-control" 
+                                               value="{{ symptom['risk_category'] }}" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        <button type="submit" name="edit_symptom" value="{{ symptom['_id'] }}" class="btn btn-primary">
+                                            Simpan Perubahan
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

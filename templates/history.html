@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Riwayat Pengecekan{% endblock %}
+
+{% block content %}
+<h2>Riwayat Pengecekan</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tanggal</th>
+            <th>Total Skor</th>
+            <th>Kategori Risiko</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in history %}
+        <tr>
+            <td>{{ record.date }}</td>
+            <td>{{ record.total_score }}</td>
+            <td>{{ record.risk_category }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3" class="text-center">Tidak ada riwayat pengecekan.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

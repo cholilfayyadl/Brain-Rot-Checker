@@ -1,0 +1,112 @@
+/* Gaya Umum */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #ffc107 !important;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Container */
+.container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabel */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    background: #ffffff;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+table th {
+    background-color: #343a40;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Tombol */
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Form */
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Warna Kustom */
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.text-success {
+    color: #28a745 !important;
+}

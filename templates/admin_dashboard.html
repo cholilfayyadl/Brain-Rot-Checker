@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h1 class="text-center mb-5">Admin Dashboard</h1>
+
+    <div class="row">
+        <!-- Card Tambah Gejala -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Tambah Gejala</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="symptom_name" class="form-label">Nama Gejala</label>
+                            <input type="text" class="form-control" id="symptom_name" name="symptom_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="weight" class="form-label">Bobot Skor</label>
+                            <input type="number" class="form-control" id="weight" name="weight" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="risk_category" class="form-label">Kategori Risiko</label>
+                            <input type="text" class="form-control" id="risk_category" name="risk_category" required>
+                        </div>
+                        <button type="submit" name="add_symptom" class="btn btn-primary">Tambah Gejala</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Tambah Rekomendasi -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Tambah Rekomendasi</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Kategori Risiko</label>
+                            <input type="text" class="form-control" id="category" name="category" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recommendation_text" class="form-label">Rekomendasi</label>
+                            <textarea class="form-control" id="recommendation_text" name="recommendation_text" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" name="add_recommendation" class="btn btn-primary">Tambah Rekomendasi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Gejala Saat Ini -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Gejala Saat Ini</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nama Gejala</th>
+                                <th>Bobot Skor</th>
+                                <th>Kategori Risiko</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for symptom in symptoms %}
+                            <tr>
+                                <td>{{ symptom.symptom_name }}</td>
+                                <td>{{ symptom.weight }}</td>
+                                <td>{{ symptom.risk_category }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Rekomendasi Saat Ini -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Rekomendasi Saat Ini</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Kategori Risiko</th>
+                                <th>Rekomendasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for recommendation in recommendations %}
+                            <tr>
+                                <td>{{ recommendation.category }}</td>
+                                <td>{{ recommendation.recommendation_text }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
